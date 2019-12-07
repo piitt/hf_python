@@ -44,3 +44,5 @@ def function(a:srt, b:str='aeio') -> set:
 def func(a:str, b:str='asdf') -> set:
 func(b='qwe', a='zxcv')
 ###
+dict(name = "John", age = 36, country = "Norway")
+tuple("asdf")
