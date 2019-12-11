@@ -46,3 +46,16 @@ func(b='qwe', a='zxcv')
 ###
 dict(name = "John", age = 36, country = "Norway")
 tuple("asdf")
+###
+todos = open('todos.txt', 'a')
+print('Put out the reash.', file=todos)
+todos.close
+###
+print(line, end='')
+###
+with open('todos.txt') as tasks:
+  for chore in tasks:
+    print(chore, end='')
+###
+escape('This is a <Request>')
+print('asd', '123', sep='\t')
