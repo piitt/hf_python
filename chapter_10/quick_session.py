@@ -5,6 +5,7 @@ app = Flask(__name__)
 # инициализация cookie
 app.secret_key = 'YouWillNeverGuess'
 
+
 @app.route('/setuser/<user>')
 def setuser(user: str) -> str:
     session['user'] = user
@@ -17,5 +18,4 @@ def getuser() -> str:
 
 
 if __name__ == '__main__':
-  app.run(debug=True)
-
+    app.run(debug=True)

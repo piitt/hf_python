@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 app.secret_key = 'YouWillNeverGuessMySecretKey'
 
+
 @app.route('/login')
 def do_login() -> str:
     session['logged_in'] = True
@@ -16,7 +17,7 @@ def do_login() -> str:
 def do_logout() -> str:
     session.pop('logged_in')
     return 'You are now logged out.'
- 
+
 
 @app.route('/')
 def hello() -> str:
@@ -43,4 +44,3 @@ def page3() -> str:
 
 if __name__ == '__main__':
     app.run(debug=True)
-
