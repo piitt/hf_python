@@ -4,3 +4,4 @@
 **/env
 **/vsearch.log
 **/.pytest_cache
+.idea/

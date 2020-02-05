@@ -118,3 +118,54 @@ with UseDatabase(dbconfig) as cursor:
     cursor.execute(_SQL)
     data = cursor.fetchall()
 ###
+
+def apply(func: object, value: object) -> object:
+  return func(value)
+
+
+def outer():
+    def inner():
+      print('This is inner.')
+
+    print('This is outer, returning inner.')
+    return inner
+
+
+def myfunc(*args):
+    for a in args:
+        print(a, end=' ')
+    if args:
+        print()
+
+values = [1,2,3,4,5]
+myfunc(*values)  # развернуть как отдельные аргументы
+
+
+
+def myfunc2(**kwargs):
+    for k, v in kwargs.items():
+        print(k, v, sep='->', end=' ')
+    if kwargs:
+        print()
+
+other_values = {'host': '127.0.0.1',
+                'user': 'alx',
+                'password': '12345',
+                'database': 'logs' }
+myfunc2(**other_values)
+# развернет как отдельные аргументы
+# myfunc2(host='127.0.0.1', user='alx', password='12345', database='logs')
+
+
+def myfunc3(*args, **kwargs):
+    if args:
+        for a in args:
+            print(a, end=' ')
+        print()
+    if kwargs:
+        for k, v in kwargs.items():
+            print(k, v, sep='->', end=' ')
+        print()
+
+# При создании своего декоратора всегда импортируйте,
+# а затем используйте функцию wraps из модуля functools
