@@ -122,6 +122,12 @@ with UseDatabase(dbconfig) as cursor:
 def apply(func: object, value: object) -> object:
   return func(value)
 
+apply(print, 42)       # 42
+apply(id, 42)          # 10915808
+apply(type, 42)        # <class 'int'>
+apply(len, "Marvin")   # 6
+apply(type, apply)     # <class 'function'>
+
 
 def outer():
     def inner():
@@ -129,6 +135,10 @@ def outer():
 
     print('This is outer, returning inner.')
     return inner
+
+i = outer()     # This is outer, invorking inner.
+type(i)         # <class 'function'>
+i()             # This is inner.
 
 
 def myfunc(*args):
@@ -138,8 +148,8 @@ def myfunc(*args):
         print()
 
 values = [1,2,3,4,5]
-myfunc(*values)  # развернуть как отдельные аргументы
-
+myfunc(values)      # [1,2,3,4,5]
+myfunc(*values)     # 1 2 3 4 5    развернуть как отдельные аргументы
 
 
 def myfunc2(**kwargs):
