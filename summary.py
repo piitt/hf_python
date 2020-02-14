@@ -179,3 +179,7 @@ def myfunc3(*args, **kwargs):
 
 # При создании своего декоратора всегда импортируйте,
 # а затем используйте функцию wraps из модуля functools
+
+from threading import Thread
+t = Thread(target=myfunction, args=(arg1, arg2, arg3))
+t.start()
