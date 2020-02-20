@@ -183,3 +183,53 @@ def myfunc3(*args, **kwargs):
 from threading import Thread
 t = Thread(target=myfunction, args=(arg1, arg2, arg3))
 t.start()
+###########################################################
+#
+import os
+os.chdir('/home/ethos/projects/python_projects/hf_python/chapter_12')
+with open('buzzers.csv') as raw_data:
+    print(raw_data.read())    #all one string
+
+import csv
+with open('buzzers.csv') as data:
+    for line in csv.reader(data):
+        print(line)
+
+# ['TIME', 'DESTINATION']
+# ['09:35', 'FREEPORT']
+# ['17:00', 'FREEPORT']
+# ['09:55', 'WEST END']
+
+with open('buzzers.csv') as data:
+    for line in csv.DictReader(data):
+        print(line)
+
+# OrderedDict([('TIME', '09:35'), ('DESTINATION', 'FREEPORT')])
+# OrderedDict([('TIME', '17:00'), ('DESTINATION', 'FREEPORT')])
+# OrderedDict([('TIME', '09:55'), ('DESTINATION', 'WEST END')])
+#
+#это равнозначно записи
+#
+# {'TIME': '09:35', 'DESTINATION': 'FREEPORT'}
+# {'TIME': '17:00', 'DESTINATION': 'FREEPORT'}
+# {'TIME': '09:55', 'DESTINATION': 'WEST END'}
+
+with open('buzzers.csv') as data:
+     ignore = data.readline() # прочитали первую строку-заголовок и переместили курсор
+     fligths = {}
+     for line in data:
+         k, v = line.strip().split(',') # разименовываем получившийся список
+         fligths[k] = v        # заполняем словарь
+
+# pprint.pprint(flights)
+# {'09:35': 'FREEPORT',
+#  '09:55': 'WEST END',
+#  '10:45': 'TREASURE CAY',
+#  '11:45': 'ROCK SOUND',
+#  '12:00': 'TREASURE CAY',
+#  '17:00': 'FREEPORT',
+#  '17:55': 'ROCK SOUND',
+#  '19:00': 'WEST END'}
+
+
+
